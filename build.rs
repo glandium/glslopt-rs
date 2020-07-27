@@ -7,6 +7,7 @@ use std::env;
 fn configure(build: &mut cc::Build) -> &mut cc::Build {
     build.define("__STDC_FORMAT_MACROS", None);
     if cfg!(target_os = "linux") {
+        build.define("_GNU_SOURCE", None);
         build.define("HAVE_ENDIAN_H", None);
     }
     if cfg!(target_os = "windows") {
